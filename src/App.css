@@ -8,6 +8,7 @@
 
 
 .title {
+  /* color: white; */
   z-index: 10;
   position: absolute;
   display: flex;
@@ -19,17 +20,8 @@
 }
 
 .title.hide {
+  /* color: white; */
   display: none;
 }
 
-.player {
-  --player-size: 60px;
-  background-color:rgb(86, 40, 86);
-  position: absolute;
-  width: var(--player-size);
-  height: var(--player-size);
-  left: var(--player-size);
-  bottom: 0;
-
-}
 

@@ -39,7 +39,7 @@ export default function Game() {
     document.addEventListener("keypress", handleKeyPress, { once: true });
     if (gameState==='started') intervalRef.current = setInterval(() => {
       handleInvaders();
-      
+      handleBullets();
     }, 1000 / 60); // Update at approximately 60 FPS 
     return () => {
       document.removeEventListener("keypress", handleKeyPress);
@@ -47,8 +47,9 @@ export default function Game() {
         clearInterval(intervalRef.current);
       }
     };
-  }, [gameState,invaders]);
+  }, [gameState,bullets,invaders]);
 
+ 
 
 
   const updateInvaders = () => {
@@ -93,16 +94,7 @@ export default function Game() {
 
 //bullet
 
-useEffect(() => {
-  if (gameState==='started') interval2Ref.current = setInterval(() => {
-    handleBullets();
-    
-  }, 1000/60);
-  return () => {
-    if (interval2Ref)
-    clearInterval(interval2Ref.current);
-  };
-}, [gameState, bullets,invaders]);
+
 
 
 function isCollision(item1,item2) {
@@ -172,26 +164,28 @@ const handleBullets = () => {
 };
 
 
+{/* {gameState === "lost" && `${getPassedPipesCount()} Pipes`} */}
 
-
-
-  return (
-    <div className="body">
-      <h1 className={`title ${gameState === "started" ? "hide" : ""}`}>
-        Press any key to start
-      </h1>
-      <h2 className={`subtitle ${gameState !== "lost" ? "hide" : ""}`}>
-        {/* {gameState === "lost" && `${getPassedPipesCount()} Pipes`} */}
-      </h2>
-      <div className={`${gameState === "started" ? "" : "hide"}`}>
-        <Invaders invaders={invaders} />
-      </div>
-      <div className={`${gameState === "started" ? "" : "hide"}`} ref={playerRef}>
-        <Player />
-      </div>
-      {gameState === "started" && (
-        <Bullet bullets={bullets} />
-      )}
+return (
+  <div className="body">
+    <h1 className={`title ${gameState === "started" ? "hide" : ""}`}>
+      Press any key to start
+    </h1>
+    <h2 className={`subtitle ${gameState !== "lost" ? "hide" : ""}`}>
+      {/* {gameState === "lost" && `${getPassedPipesCount()} Pipes`} */}
+    </h2>
+    <div className={`${gameState === "started" ? "" : "hide"}`}>
+      <Invaders invaders={invaders} />
     </div>
-  );
+    <div className={`${gameState === "started" ? "" : "hide"}`} ref={playerRef}>
+      <Player />
+    </div>
+    {gameState === "started" && (
+      <Bullet bullets={bullets} />
+    )}
+  </div>
+);
+
+  
+  
 }

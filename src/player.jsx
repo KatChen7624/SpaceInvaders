@@ -34,7 +34,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 let xvalue
-const PLAYER_WIDTH = 80; // Adjust the width as needed
+const PLAYER_WIDTH = 100; // Adjust the width as needed
 
 const PlayerContainer = styled.div`
   position: absolute;
