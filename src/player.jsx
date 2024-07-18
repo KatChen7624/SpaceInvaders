@@ -56,7 +56,7 @@ const Player = () => {
       if (event.key === 'ArrowLeft') {
         setPlayerPosition((prev) => Math.max(prev - 10, 0)); // Prevent moving out of bounds
       } else if (event.key === 'ArrowRight') {
-        setPlayerPosition((prev) => Math.min(prev + 10, window.innerWidth - PLAYER_WIDTH)); // Prevent moving out of bounds
+        setPlayerPosition((prev) => Math.min(prev + 10, window.innerWidth - PLAYER_WIDTH/4)); // Prevent moving out of bounds
       }
     };
 

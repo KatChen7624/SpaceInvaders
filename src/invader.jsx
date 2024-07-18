@@ -24,11 +24,14 @@ const Invader = React.memo(({ left, top }) => (
 const Invaders = ({ invaders }) => {
   return (
     <div>
-      {invaders.map((invader, index) => (
-        <Invader key={index} left={invader.left} top={invader.top} />
-      ))}
+      {invaders.map((row, rowIndex) =>
+        row.map((invader, colIndex) => (
+          <Invader key={`${rowIndex}-${colIndex}`} left={invader.left} top={invader.top} />
+        ))
+      )}
     </div>
   );
 };
+
 
 export default Invaders;
