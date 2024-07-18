@@ -85,19 +85,19 @@ export default function Game() {
         bottom: bullet.bottom + BULLET_SPEED,
       }))
   
-      let BulletsTemp = [...updatedBullets];
+      let BulletsTemp = [...updatedBullets]; 
       //if (count2Ref===BULLET_INTERVAL-1)
-      // BulletsTemp.forEach((item1) => {
-      //   updatedInvaders.forEach((item2) => {
+      BulletsTemp.forEach((item1) => {
+        updatedInvaders.forEach((item2) => {
          
-      //     if (isCollision(item1, item2[item1.index])) {
-      //       BulletsTemp = BulletsTemp.filter((item) => item !== item1);
-      //       item2[item1.index].top=-100;
-      //       }
-  
-      //   });
-      // });
-      setBullets(BulletsTemp)
+          if (isCollision(item1, item2[item1.index])) {
+            BulletsTemp = BulletsTemp.filter((item) => item !== item1);
+            item2[item1.index].top=-100;
+            }
+                       
+        });
+      });
+      setBullets(BulletsTemp) 
    
   };
   updateBullets();
@@ -141,7 +141,8 @@ export default function Game() {
 
 
     }
-    const newInvadersArray=invaders.map(inner=>[...inner])
+    //const newInvadersArray=invaders.map(inner=>[...inner])
+    const newInvadersArray=[...invaders]
     newInvadersArray.push(newInvaders)
     console.log(newInvadersArray)
 
